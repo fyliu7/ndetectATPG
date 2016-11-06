@@ -33,9 +33,9 @@
 			(done)		pkg/interface/cscope.files	
 			
 2016/11/06	(done)		read rc extractio
-			report rc extract
+			(done)		report rc extract
 			(done)		pkg/core/fault.cpp
 			(done)		pkg/core/fault.h
-			pkg/atpg/src/atpg_cmd.cpp	
+			(done)		pkg/atpg/src/atpg_cmd.cpp	
 			
 			

@@ -175,13 +175,6 @@ bool ReadRCExtraceCmd::exec(const vector<string> &argv) {
 	
 	// read rc extrace file
 	cout << "#  Reading rc extrace file ..." << endl;
-//	FILE * rcextrace_filein;
-//	rcextrace_filein = fopen(optMgr_.getParsedArg(0).c_str(), "r");
-//	if(rcextrace_filein!=NULL)
-//		cout << "open rc extrace file " << endl;
-//	else
-//		cout << "not open rc extrace file " << endl;
-	char temp_char;
 	#define SIZE 100
 	char line[SIZE];
 	string temp_string;
@@ -189,9 +182,7 @@ bool ReadRCExtraceCmd::exec(const vector<string> &argv) {
 	
 	while(frcextracefile.getline(line,sizeof(line),' ')){
 		if(line[0] == '*'){
-//			cout << line;
 			frcextracefile.getline(line,sizeof(line),'\n');
-//			cout << line << endl;
 		}
 		else{
 			frcextracefile.getline(line,sizeof(line),' ');
@@ -206,17 +197,15 @@ bool ReadRCExtraceCmd::exec(const vector<string> &argv) {
 			line_ = &line[1];
 			cline_ = line_;
 			victimgate = atoi(cline_);
+			
+			for(unsigned int i=0; i< fanMgr_->atpg_mgr->fListExtract_->faults_.size(); i++){
+				if(fanMgr_->atpg_mgr->fListExtract_->faults_[i]->gate_ == aggrgate){
+					fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victimgate_.push_back(victimgate);
+				}	
+			} 
 		}
-	}
-	
-/* 	for(int i=0; i< fanMgr_->atpg_mgr->fListExtract_->faults_.size(); i++){
-		if(fanMgr_->atpg_mgr->fListExtract_->faults_[i]->gate_ == aggrgate){
-			fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victimgate_.push_back(victimgate);
-			cout << fanMgr_->atpg_mgr->fListExtract_->faults_[i]->gate_ << " ";
-			cout << fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victimgate_.end << endl;
-		}	
-	} */
-
+	}			
+						
     TmStat stat;
     fanMgr_->tmusg.getPeriodUsage(stat);
     cout << "#  Finished rc extrace file `" << optMgr_.getParsedArg(0) << "'";
@@ -256,20 +245,15 @@ bool ReportRCExtraceCmd::exec(const vector<string> &argv) {
         return true;
     }
 
-    if (!fanMgr_->atpg_mgr->pcoll_) {
-        cerr << "**ERROR ReportRCExtraceCmd::exec(): rc extrace needed" << endl;
-        return false;
-    }
-
-/*     cout << "#  rc extrace information" << endl;
-    cout << "#    number of pattern: " << fanMgr_->atpg_mgr->pcoll_->pats_.size() << endl;
-    if (!optMgr_.isFlagSet("disable-order")) {
-        fanMgr_->atpg_mgr->pcoll_->PrintPorts(); 
-    }
-    cout << "#" << endl;
-    fanMgr_->atpg_mgr->pcoll_->PrintPatterns(); 
-
-    return true; */
+	for(unsigned int i=0; i< fanMgr_->atpg_mgr->fListExtract_->faults_.size(); i++){
+		cout << fanMgr_->atpg_mgr->fListExtract_->faults_[i]->gate_ << " ";
+		for(unsigned int j=0; j< fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victimgate_.size(); j++){
+			cout << fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victimgate_[j] << " ";
+		}
+		cout << endl;
+	}
+	
+	return true;
 } //}}}
 // ---------------------------  
 
