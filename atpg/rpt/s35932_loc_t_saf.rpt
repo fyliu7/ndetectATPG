@@ -1,0 +1,32 @@
+#                 Statistics Report
+#  Circuit name                               s35932
+#  Fault model                                   SAF
+#  Pattern type                                  LOC
+#  -------------------------------------------------
+#  Fault classes                             #faults
+#  ----------------------------  -------------------
+#    FU (full)                                 96290
+#    --------------------------  -------------------
+#    UD (undetected)                               0
+#    PT (possibly testable)                        0
+#    AU (atpg untestable)                       9536
+#    RE (redundant)                                0
+#    AB (atpg abort)                               0
+#    TI (tied)                                     0
+#    DH (hard-but-detected)                     1860
+#    --------------------------  -------------------
+#    DT (detected)                             86754
+#  -------------------------------------------------
+#  Coverage                               percentage
+#    --------------------------  -------------------
+#    test coverage                              100%
+#    fault coverage                            90.1%
+#    atpg effectiveness                         100%
+#  -------------------------------------------------
+#  #Patterns                                      16
+#  #Patterns Norm.                                16
+#  Ave.Spec-rate                              64.39%
+#  Max.Spec-rate                                100%
+#  -------------------------------------------------
+#  ATPG runtime                              311.5 s
+#  -------------------------------------------------

@@ -1,0 +1,369 @@
+文法
+
+    0 $accept: start $end
+
+    1 start: initialize header pattern_type pattern_num patterns
+
+    2 initialize: /* 空白 */
+
+    3 header: names '|' names '|' names
+    4       | names '|' '|' names
+
+    5 pattern_type: PATTERN_TYPE
+
+    6 pattern_num: PATTERN_NUM
+
+    7 patterns: patterns pattern
+    8         | /* 空白 */
+
+    9 names: names NAME
+   10      | NAME
+
+   11 pattern: PATTERN nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq
+
+   12 nameq: NAME
+   13      | /* 空白 */
+
+
+終結語詞，附有它們出現處的規則
+
+$end (0) 0
+'|' (124) 3 4 11
+error (256)
+PATTERN (258) 11
+NAME (259) 9 10 12
+PATTERN_NUM (260) 6
+PATTERN_TYPE (261) 5
+
+
+非終結語詞，附有它們出現處的規則
+
+$accept (8)
+   於左側： 0
+start (9)
+   於左側： 1,於右側： 0
+initialize (10)
+   於左側： 2,於右側： 1
+header (11)
+   於左側： 3 4,於右側： 1
+pattern_type (12)
+   於左側： 5,於右側： 1
+pattern_num (13)
+   於左側： 6,於右側： 1
+patterns (14)
+   於左側： 7 8,於右側： 1 7
+names (15)
+   於左側： 9 10,於右側： 3 4 9
+pattern (16)
+   於左側： 11,於右側： 7
+nameq (17)
+   於左側： 12 13,於右側： 11
+
+
+State 0
+
+    0 $accept: . start $end
+
+    $預設  使用規則 2 以縮減 (initialize)
+
+    start       進入狀態 1
+    initialize  進入狀態 2
+
+
+State 1
+
+    0 $accept: start . $end
+
+    $end  偏移，並進入狀態 3
+
+
+State 2
+
+    1 start: initialize . header pattern_type pattern_num patterns
+
+    NAME  偏移，並進入狀態 4
+
+    header  進入狀態 5
+    names   進入狀態 6
+
+
+State 3
+
+    0 $accept: start $end .
+
+    $預設  接受
+
+
+State 4
+
+   10 names: NAME .
+
+    $預設  使用規則 10 以縮減 (names)
+
+
+State 5
+
+    1 start: initialize header . pattern_type pattern_num patterns
+
+    PATTERN_TYPE  偏移，並進入狀態 7
+
+    pattern_type  進入狀態 8
+
+
+State 6
+
+    3 header: names . '|' names '|' names
+    4       | names . '|' '|' names
+    9 names: names . NAME
+
+    NAME  偏移，並進入狀態 9
+    '|'   偏移，並進入狀態 10
+
+
+State 7
+
+    5 pattern_type: PATTERN_TYPE .
+
+    $預設  使用規則 5 以縮減 (pattern_type)
+
+
+State 8
+
+    1 start: initialize header pattern_type . pattern_num patterns
+
+    PATTERN_NUM  偏移，並進入狀態 11
+
+    pattern_num  進入狀態 12
+
+
+State 9
+
+    9 names: names NAME .
+
+    $預設  使用規則 9 以縮減 (names)
+
+
+State 10
+
+    3 header: names '|' . names '|' names
+    4       | names '|' . '|' names
+
+    NAME  偏移，並進入狀態 4
+    '|'   偏移，並進入狀態 13
+
+    names  進入狀態 14
+
+
+State 11
+
+    6 pattern_num: PATTERN_NUM .
+
+    $預設  使用規則 6 以縮減 (pattern_num)
+
+
+State 12
+
+    1 start: initialize header pattern_type pattern_num . patterns
+
+    $預設  使用規則 8 以縮減 (patterns)
+
+    patterns  進入狀態 15
+
+
+State 13
+
+    4 header: names '|' '|' . names
+
+    NAME  偏移，並進入狀態 4
+
+    names  進入狀態 16
+
+
+State 14
+
+    3 header: names '|' names . '|' names
+    9 names: names . NAME
+
+    NAME  偏移，並進入狀態 9
+    '|'   偏移，並進入狀態 17
+
+
+State 15
+
+    1 start: initialize header pattern_type pattern_num patterns .
+    7 patterns: patterns . pattern
+
+    PATTERN  偏移，並進入狀態 18
+
+    $預設  使用規則 1 以縮減 (start)
+
+    pattern  進入狀態 19
+
+
+State 16
+
+    4 header: names '|' '|' names .
+    9 names: names . NAME
+
+    NAME  偏移，並進入狀態 9
+
+    $預設  使用規則 4 以縮減 (header)
+
+
+State 17
+
+    3 header: names '|' names '|' . names
+
+    NAME  偏移，並進入狀態 4
+
+    names  進入狀態 20
+
+
+State 18
+
+   11 pattern: PATTERN . nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq
+
+    NAME  偏移，並進入狀態 21
+
+    $預設  使用規則 13 以縮減 (nameq)
+
+    nameq  進入狀態 22
+
+
+State 19
+
+    7 patterns: patterns pattern .
+
+    $預設  使用規則 7 以縮減 (patterns)
+
+
+State 20
+
+    3 header: names '|' names '|' names .
+    9 names: names . NAME
+
+    NAME  偏移，並進入狀態 9
+
+    $預設  使用規則 3 以縮減 (header)
+
+
+State 21
+
+   12 nameq: NAME .
+
+    $預設  使用規則 12 以縮減 (nameq)
+
+
+State 22
+
+   11 pattern: PATTERN nameq . '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq
+
+    '|'  偏移，並進入狀態 23
+
+
+State 23
+
+   11 pattern: PATTERN nameq '|' . nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq
+
+    NAME  偏移，並進入狀態 21
+
+    $預設  使用規則 13 以縮減 (nameq)
+
+    nameq  進入狀態 24
+
+
+State 24
+
+   11 pattern: PATTERN nameq '|' nameq . '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq
+
+    '|'  偏移，並進入狀態 25
+
+
+State 25
+
+   11 pattern: PATTERN nameq '|' nameq '|' . nameq '|' nameq '|' nameq '|' nameq '|' nameq
+
+    NAME  偏移，並進入狀態 21
+
+    $預設  使用規則 13 以縮減 (nameq)
+
+    nameq  進入狀態 26
+
+
+State 26
+
+   11 pattern: PATTERN nameq '|' nameq '|' nameq . '|' nameq '|' nameq '|' nameq '|' nameq
+
+    '|'  偏移，並進入狀態 27
+
+
+State 27
+
+   11 pattern: PATTERN nameq '|' nameq '|' nameq '|' . nameq '|' nameq '|' nameq '|' nameq
+
+    NAME  偏移，並進入狀態 21
+
+    $預設  使用規則 13 以縮減 (nameq)
+
+    nameq  進入狀態 28
+
+
+State 28
+
+   11 pattern: PATTERN nameq '|' nameq '|' nameq '|' nameq . '|' nameq '|' nameq '|' nameq
+
+    '|'  偏移，並進入狀態 29
+
+
+State 29
+
+   11 pattern: PATTERN nameq '|' nameq '|' nameq '|' nameq '|' . nameq '|' nameq '|' nameq
+
+    NAME  偏移，並進入狀態 21
+
+    $預設  使用規則 13 以縮減 (nameq)
+
+    nameq  進入狀態 30
+
+
+State 30
+
+   11 pattern: PATTERN nameq '|' nameq '|' nameq '|' nameq '|' nameq . '|' nameq '|' nameq
+
+    '|'  偏移，並進入狀態 31
+
+
+State 31
+
+   11 pattern: PATTERN nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' . nameq '|' nameq
+
+    NAME  偏移，並進入狀態 21
+
+    $預設  使用規則 13 以縮減 (nameq)
+
+    nameq  進入狀態 32
+
+
+State 32
+
+   11 pattern: PATTERN nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq . '|' nameq
+
+    '|'  偏移，並進入狀態 33
+
+
+State 33
+
+   11 pattern: PATTERN nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' . nameq
+
+    NAME  偏移，並進入狀態 21
+
+    $預設  使用規則 13 以縮減 (nameq)
+
+    nameq  進入狀態 34
+
+
+State 34
+
+   11 pattern: PATTERN nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq '|' nameq .
+
+    $預設  使用規則 11 以縮減 (pattern)

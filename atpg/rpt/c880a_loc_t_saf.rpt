@@ -1,0 +1,32 @@
+#                 Statistics Report
+#  Circuit name                                c880a
+#  Fault model                                   SAF
+#  Pattern type                                  LOC
+#  -------------------------------------------------
+#  Fault classes                             #faults
+#  ----------------------------  -------------------
+#    FU (full)                                  2396
+#    --------------------------  -------------------
+#    UD (undetected)                               0
+#    PT (possibly testable)                        0
+#    AU (atpg untestable)                          0
+#    RE (redundant)                                0
+#    AB (atpg abort)                               0
+#    TI (tied)                                     0
+#    DH (hard-but-detected)                       97
+#    --------------------------  -------------------
+#    DT (detected)                              2396
+#  -------------------------------------------------
+#  Coverage                               percentage
+#    --------------------------  -------------------
+#    test coverage                              100%
+#    fault coverage                             100%
+#    atpg effectiveness                         100%
+#  -------------------------------------------------
+#  #Patterns                                      70
+#  #Patterns Norm.                                70
+#  Ave.Spec-rate                              32.44%
+#  Max.Spec-rate                              68.33%
+#  -------------------------------------------------
+#  ATPG runtime                              0.805 s
+#  -------------------------------------------------

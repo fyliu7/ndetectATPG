@@ -1,0 +1,32 @@
+#                 Statistics Report
+#  Circuit name                                 b22s
+#  Fault model                                   SAF
+#  Pattern type                                BASIC
+#  -------------------------------------------------
+#  Fault classes                             #faults
+#  ----------------------------  -------------------
+#    FU (full)                                 93620
+#    --------------------------  -------------------
+#    UD (undetected)                               0
+#    PT (possibly testable)                        0
+#    AU (atpg untestable)                        105
+#    RE (redundant)                                0
+#    AB (atpg abort)                            2174
+#    TI (tied)                                     0
+#    DH (hard-but-detected)                     4536
+#    --------------------------  -------------------
+#    DT (detected)                             91341
+#  -------------------------------------------------
+#  Coverage                               percentage
+#    --------------------------  -------------------
+#    test coverage                            97.68%
+#    fault coverage                           97.57%
+#    atpg effectiveness                       97.68%
+#  -------------------------------------------------
+#  #Patterns                                     792
+#  #Patterns Norm.                               726
+#  Ave.Spec-rate                               16.6%
+#  Max.Spec-rate                               75.1%
+#  -------------------------------------------------
+#  ATPG runtime                               1171 s
+#  -------------------------------------------------

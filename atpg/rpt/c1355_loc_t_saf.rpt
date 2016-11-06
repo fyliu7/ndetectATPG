@@ -1,0 +1,32 @@
+#                 Statistics Report
+#  Circuit name                                c1355
+#  Fault model                                   SAF
+#  Pattern type                                  LOC
+#  -------------------------------------------------
+#  Fault classes                             #faults
+#  ----------------------------  -------------------
+#    FU (full)                                  3398
+#    --------------------------  -------------------
+#    UD (undetected)                               0
+#    PT (possibly testable)                        0
+#    AU (atpg untestable)                          0
+#    RE (redundant)                                0
+#    AB (atpg abort)                               0
+#    TI (tied)                                     0
+#    DH (hard-but-detected)                     1951
+#    --------------------------  -------------------
+#    DT (detected)                              3390
+#  -------------------------------------------------
+#  Coverage                               percentage
+#    --------------------------  -------------------
+#    test coverage                              100%
+#    fault coverage                           99.76%
+#    atpg effectiveness                       99.76%
+#  -------------------------------------------------
+#  #Patterns                                     107
+#  #Patterns Norm.                               107
+#  Ave.Spec-rate                              133.3%
+#  Max.Spec-rate                                100%
+#  -------------------------------------------------
+#  ATPG runtime                              162.2 s
+#  -------------------------------------------------

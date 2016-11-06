@@ -1,0 +1,307 @@
+Terminals unused in grammar
+
+   PATTERN_TYPE
+
+
+文法
+
+    0 $accept: start $end
+
+    1 start: initialize patterns
+
+    2 initialize: /* 空白 */
+
+    3 patterns: patterns pattern
+    4         | /* 空白 */
+
+    5 pattern: PATTERN VALUE '_' valueq '|' VALUE '_' valueq
+    6        | PATTERN VALUE '-' '>' VALUE '_' VALUE '@' VALUE '|' VALUE '_' VALUE
+    7        | PATTERN VALUE '-' '>' VALUE '_' valueq '|' VALUE '_' valueq
+
+    8 valueq: VALUE
+    9       | /* 空白 */
+
+
+終結語詞，附有它們出現處的規則
+
+$end (0) 0
+'-' (45) 6 7
+'>' (62) 6 7
+'@' (64) 6
+'_' (95) 5 6 7
+'|' (124) 5 6 7
+error (256)
+PATTERN (258) 5 6 7
+VALUE (259) 5 6 7 8
+PATTERN_TYPE (260)
+
+
+非終結語詞，附有它們出現處的規則
+
+$accept (11)
+   於左側： 0
+start (12)
+   於左側： 1,於右側： 0
+initialize (13)
+   於左側： 2,於右側： 1
+patterns (14)
+   於左側： 3 4,於右側： 1 3
+pattern (15)
+   於左側： 5 6 7,於右側： 3
+valueq (16)
+   於左側： 8 9,於右側： 5 7
+
+
+State 0
+
+    0 $accept: . start $end
+
+    $預設  使用規則 2 以縮減 (initialize)
+
+    start       進入狀態 1
+    initialize  進入狀態 2
+
+
+State 1
+
+    0 $accept: start . $end
+
+    $end  偏移，並進入狀態 3
+
+
+State 2
+
+    1 start: initialize . patterns
+
+    $預設  使用規則 4 以縮減 (patterns)
+
+    patterns  進入狀態 4
+
+
+State 3
+
+    0 $accept: start $end .
+
+    $預設  接受
+
+
+State 4
+
+    1 start: initialize patterns .
+    3 patterns: patterns . pattern
+
+    PATTERN  偏移，並進入狀態 5
+
+    $預設  使用規則 1 以縮減 (start)
+
+    pattern  進入狀態 6
+
+
+State 5
+
+    5 pattern: PATTERN . VALUE '_' valueq '|' VALUE '_' valueq
+    6        | PATTERN . VALUE '-' '>' VALUE '_' VALUE '@' VALUE '|' VALUE '_' VALUE
+    7        | PATTERN . VALUE '-' '>' VALUE '_' valueq '|' VALUE '_' valueq
+
+    VALUE  偏移，並進入狀態 7
+
+
+State 6
+
+    3 patterns: patterns pattern .
+
+    $預設  使用規則 3 以縮減 (patterns)
+
+
+State 7
+
+    5 pattern: PATTERN VALUE . '_' valueq '|' VALUE '_' valueq
+    6        | PATTERN VALUE . '-' '>' VALUE '_' VALUE '@' VALUE '|' VALUE '_' VALUE
+    7        | PATTERN VALUE . '-' '>' VALUE '_' valueq '|' VALUE '_' valueq
+
+    '_'  偏移，並進入狀態 8
+    '-'  偏移，並進入狀態 9
+
+
+State 8
+
+    5 pattern: PATTERN VALUE '_' . valueq '|' VALUE '_' valueq
+
+    VALUE  偏移，並進入狀態 10
+
+    $預設  使用規則 9 以縮減 (valueq)
+
+    valueq  進入狀態 11
+
+
+State 9
+
+    6 pattern: PATTERN VALUE '-' . '>' VALUE '_' VALUE '@' VALUE '|' VALUE '_' VALUE
+    7        | PATTERN VALUE '-' . '>' VALUE '_' valueq '|' VALUE '_' valueq
+
+    '>'  偏移，並進入狀態 12
+
+
+State 10
+
+    8 valueq: VALUE .
+
+    $預設  使用規則 8 以縮減 (valueq)
+
+
+State 11
+
+    5 pattern: PATTERN VALUE '_' valueq . '|' VALUE '_' valueq
+
+    '|'  偏移，並進入狀態 13
+
+
+State 12
+
+    6 pattern: PATTERN VALUE '-' '>' . VALUE '_' VALUE '@' VALUE '|' VALUE '_' VALUE
+    7        | PATTERN VALUE '-' '>' . VALUE '_' valueq '|' VALUE '_' valueq
+
+    VALUE  偏移，並進入狀態 14
+
+
+State 13
+
+    5 pattern: PATTERN VALUE '_' valueq '|' . VALUE '_' valueq
+
+    VALUE  偏移，並進入狀態 15
+
+
+State 14
+
+    6 pattern: PATTERN VALUE '-' '>' VALUE . '_' VALUE '@' VALUE '|' VALUE '_' VALUE
+    7        | PATTERN VALUE '-' '>' VALUE . '_' valueq '|' VALUE '_' valueq
+
+    '_'  偏移，並進入狀態 16
+
+
+State 15
+
+    5 pattern: PATTERN VALUE '_' valueq '|' VALUE . '_' valueq
+
+    '_'  偏移，並進入狀態 17
+
+
+State 16
+
+    6 pattern: PATTERN VALUE '-' '>' VALUE '_' . VALUE '@' VALUE '|' VALUE '_' VALUE
+    7        | PATTERN VALUE '-' '>' VALUE '_' . valueq '|' VALUE '_' valueq
+
+    VALUE  偏移，並進入狀態 18
+
+    $預設  使用規則 9 以縮減 (valueq)
+
+    valueq  進入狀態 19
+
+
+State 17
+
+    5 pattern: PATTERN VALUE '_' valueq '|' VALUE '_' . valueq
+
+    VALUE  偏移，並進入狀態 10
+
+    $預設  使用規則 9 以縮減 (valueq)
+
+    valueq  進入狀態 20
+
+
+State 18
+
+    6 pattern: PATTERN VALUE '-' '>' VALUE '_' VALUE . '@' VALUE '|' VALUE '_' VALUE
+    8 valueq: VALUE .
+
+    '@'  偏移，並進入狀態 21
+
+    $預設  使用規則 8 以縮減 (valueq)
+
+
+State 19
+
+    7 pattern: PATTERN VALUE '-' '>' VALUE '_' valueq . '|' VALUE '_' valueq
+
+    '|'  偏移，並進入狀態 22
+
+
+State 20
+
+    5 pattern: PATTERN VALUE '_' valueq '|' VALUE '_' valueq .
+
+    $預設  使用規則 5 以縮減 (pattern)
+
+
+State 21
+
+    6 pattern: PATTERN VALUE '-' '>' VALUE '_' VALUE '@' . VALUE '|' VALUE '_' VALUE
+
+    VALUE  偏移，並進入狀態 23
+
+
+State 22
+
+    7 pattern: PATTERN VALUE '-' '>' VALUE '_' valueq '|' . VALUE '_' valueq
+
+    VALUE  偏移，並進入狀態 24
+
+
+State 23
+
+    6 pattern: PATTERN VALUE '-' '>' VALUE '_' VALUE '@' VALUE . '|' VALUE '_' VALUE
+
+    '|'  偏移，並進入狀態 25
+
+
+State 24
+
+    7 pattern: PATTERN VALUE '-' '>' VALUE '_' valueq '|' VALUE . '_' valueq
+
+    '_'  偏移，並進入狀態 26
+
+
+State 25
+
+    6 pattern: PATTERN VALUE '-' '>' VALUE '_' VALUE '@' VALUE '|' . VALUE '_' VALUE
+
+    VALUE  偏移，並進入狀態 27
+
+
+State 26
+
+    7 pattern: PATTERN VALUE '-' '>' VALUE '_' valueq '|' VALUE '_' . valueq
+
+    VALUE  偏移，並進入狀態 10
+
+    $預設  使用規則 9 以縮減 (valueq)
+
+    valueq  進入狀態 28
+
+
+State 27
+
+    6 pattern: PATTERN VALUE '-' '>' VALUE '_' VALUE '@' VALUE '|' VALUE . '_' VALUE
+
+    '_'  偏移，並進入狀態 29
+
+
+State 28
+
+    7 pattern: PATTERN VALUE '-' '>' VALUE '_' valueq '|' VALUE '_' valueq .
+
+    $預設  使用規則 7 以縮減 (pattern)
+
+
+State 29
+
+    6 pattern: PATTERN VALUE '-' '>' VALUE '_' VALUE '@' VALUE '|' VALUE '_' . VALUE
+
+    VALUE  偏移，並進入狀態 30
+
+
+State 30
+
+    6 pattern: PATTERN VALUE '-' '>' VALUE '_' VALUE '@' VALUE '|' VALUE '_' VALUE .
+
+    $預設  使用規則 6 以縮減 (pattern)

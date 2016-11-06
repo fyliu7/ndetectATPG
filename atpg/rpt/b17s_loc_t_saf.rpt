@@ -1,0 +1,32 @@
+#                 Statistics Report
+#  Circuit name                                 b17s
+#  Fault model                                   SAF
+#  Pattern type                                BASIC
+#  -------------------------------------------------
+#  Fault classes                             #faults
+#  ----------------------------  -------------------
+#    FU (full)                                154988
+#    --------------------------  -------------------
+#    UD (undetected)                               0
+#    PT (possibly testable)                        0
+#    AU (atpg untestable)                         84
+#    RE (redundant)                                0
+#    AB (atpg abort)                            6110
+#    TI (tied)                                     0
+#    DH (hard-but-detected)                    12604
+#    --------------------------  -------------------
+#    DT (detected)                            148794
+#  -------------------------------------------------
+#  Coverage                               percentage
+#    --------------------------  -------------------
+#    test coverage                            96.06%
+#    fault coverage                              96%
+#    atpg effectiveness                       96.06%
+#  -------------------------------------------------
+#  #Patterns                                     861
+#  #Patterns Norm.                               821
+#  Ave.Spec-rate                              9.408%
+#  Max.Spec-rate                               93.8%
+#  -------------------------------------------------
+#  ATPG runtime                               3141 s
+#  -------------------------------------------------

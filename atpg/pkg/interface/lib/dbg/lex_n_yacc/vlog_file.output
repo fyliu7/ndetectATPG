@@ -1,0 +1,777 @@
+Terminals unused in grammar
+
+   NUMBER
+
+
+文法
+
+    0 $accept: start $end
+
+    1 start: initialize modules
+
+    2 initialize: /* 空白 */
+
+    3 modules: modules module
+    4        | module
+
+    5 module: MODULE add_module ports body ENDMODULE
+    6       | PRIMITIVE add_module ports body ENDPRIMITIVE
+
+    7 add_module: NAME
+
+    8 ports: '(' list ')' ';'
+    9      | ';'
+
+   10 body: body net
+   11     | body assign
+   12     | body cell
+   13     | /* 空白 */
+
+   14 net: net_type list ';'
+
+   15 net_type: INPUT
+   16         | OUTPUT
+   17         | INOUT
+   18         | WIRE
+   19         | REG
+   20         | SUPPLY_L
+   21         | SUPPLY_H
+
+   22 assign: ASSIGN NAME '=' NAME ';'
+
+   23 cell: NAME NAME '(' list ')' ';'
+   24     | NAME '(' list ')' ';'
+   25     | NAME NAME '(' mapping_list ')' ';'
+   26     | NAME '(' strength_list ')' NAME '(' list ')' ';'
+
+   27 list: list ',' NAME
+   28     | list ','
+   29     | NAME
+   30     | /* 空白 */
+
+   31 strength_list: strength_list ',' STRENGTH
+   32              | STRENGTH
+
+   33 mapping_list: mapping_list ',' '.' NAME '(' NAME ')'
+   34             | '.' NAME '(' NAME ')'
+
+
+終結語詞，附有它們出現處的規則
+
+$end (0) 0
+'(' (40) 8 23 24 25 26 33 34
+')' (41) 8 23 24 25 26 33 34
+',' (44) 27 28 31 33
+'.' (46) 33 34
+';' (59) 8 9 14 22 23 24 25 26
+'=' (61) 22
+error (256)
+MODULE (258) 5
+ENDMODULE (259) 5
+PRIMITIVE (260) 6
+ENDPRIMITIVE (261) 6
+ASSIGN (262) 22
+INPUT (263) 15
+OUTPUT (264) 16
+INOUT (265) 17
+WIRE (266) 18
+REG (267) 19
+SUPPLY_L (268) 20
+SUPPLY_H (269) 21
+NAME (270) 7 22 23 24 25 26 27 29 33 34
+NUMBER (271)
+STRENGTH (272) 31 32
+
+
+非終結語詞，附有它們出現處的規則
+
+$accept (24)
+   於左側： 0
+start (25)
+   於左側： 1,於右側： 0
+initialize (26)
+   於左側： 2,於右側： 1
+modules (27)
+   於左側： 3 4,於右側： 1 3
+module (28)
+   於左側： 5 6,於右側： 3 4
+add_module (29)
+   於左側： 7,於右側： 5 6
+ports (30)
+   於左側： 8 9,於右側： 5 6
+body (31)
+   於左側： 10 11 12 13,於右側： 5 6 10 11 12
+net (32)
+   於左側： 14,於右側： 10
+net_type (33)
+   於左側： 15 16 17 18 19 20 21,於右側： 14
+assign (34)
+   於左側： 22,於右側： 11
+cell (35)
+   於左側： 23 24 25 26,於右側： 12
+list (36)
+   於左側： 27 28 29 30,於右側： 8 14 23 24 26 27 28
+strength_list (37)
+   於左側： 31 32,於右側： 26 31
+mapping_list (38)
+   於左側： 33 34,於右側： 25 33
+
+
+State 0
+
+    0 $accept: . start $end
+
+    $預設  使用規則 2 以縮減 (initialize)
+
+    start       進入狀態 1
+    initialize  進入狀態 2
+
+
+State 1
+
+    0 $accept: start . $end
+
+    $end  偏移，並進入狀態 3
+
+
+State 2
+
+    1 start: initialize . modules
+
+    MODULE     偏移，並進入狀態 4
+    PRIMITIVE  偏移，並進入狀態 5
+
+    modules  進入狀態 6
+    module   進入狀態 7
+
+
+State 3
+
+    0 $accept: start $end .
+
+    $預設  接受
+
+
+State 4
+
+    5 module: MODULE . add_module ports body ENDMODULE
+
+    NAME  偏移，並進入狀態 8
+
+    add_module  進入狀態 9
+
+
+State 5
+
+    6 module: PRIMITIVE . add_module ports body ENDPRIMITIVE
+
+    NAME  偏移，並進入狀態 8
+
+    add_module  進入狀態 10
+
+
+State 6
+
+    1 start: initialize modules .
+    3 modules: modules . module
+
+    MODULE     偏移，並進入狀態 4
+    PRIMITIVE  偏移，並進入狀態 5
+
+    $預設  使用規則 1 以縮減 (start)
+
+    module  進入狀態 11
+
+
+State 7
+
+    4 modules: module .
+
+    $預設  使用規則 4 以縮減 (modules)
+
+
+State 8
+
+    7 add_module: NAME .
+
+    $預設  使用規則 7 以縮減 (add_module)
+
+
+State 9
+
+    5 module: MODULE add_module . ports body ENDMODULE
+
+    '('  偏移，並進入狀態 12
+    ';'  偏移，並進入狀態 13
+
+    ports  進入狀態 14
+
+
+State 10
+
+    6 module: PRIMITIVE add_module . ports body ENDPRIMITIVE
+
+    '('  偏移，並進入狀態 12
+    ';'  偏移，並進入狀態 13
+
+    ports  進入狀態 15
+
+
+State 11
+
+    3 modules: modules module .
+
+    $預設  使用規則 3 以縮減 (modules)
+
+
+State 12
+
+    8 ports: '(' . list ')' ';'
+
+    NAME  偏移，並進入狀態 16
+
+    $預設  使用規則 30 以縮減 (list)
+
+    list  進入狀態 17
+
+
+State 13
+
+    9 ports: ';' .
+
+    $預設  使用規則 9 以縮減 (ports)
+
+
+State 14
+
+    5 module: MODULE add_module ports . body ENDMODULE
+
+    $預設  使用規則 13 以縮減 (body)
+
+    body  進入狀態 18
+
+
+State 15
+
+    6 module: PRIMITIVE add_module ports . body ENDPRIMITIVE
+
+    $預設  使用規則 13 以縮減 (body)
+
+    body  進入狀態 19
+
+
+State 16
+
+   29 list: NAME .
+
+    $預設  使用規則 29 以縮減 (list)
+
+
+State 17
+
+    8 ports: '(' list . ')' ';'
+   27 list: list . ',' NAME
+   28     | list . ','
+
+    ')'  偏移，並進入狀態 20
+    ','  偏移，並進入狀態 21
+
+
+State 18
+
+    5 module: MODULE add_module ports body . ENDMODULE
+   10 body: body . net
+   11     | body . assign
+   12     | body . cell
+
+    ENDMODULE  偏移，並進入狀態 22
+    ASSIGN     偏移，並進入狀態 23
+    INPUT      偏移，並進入狀態 24
+    OUTPUT     偏移，並進入狀態 25
+    INOUT      偏移，並進入狀態 26
+    WIRE       偏移，並進入狀態 27
+    REG        偏移，並進入狀態 28
+    SUPPLY_L   偏移，並進入狀態 29
+    SUPPLY_H   偏移，並進入狀態 30
+    NAME       偏移，並進入狀態 31
+
+    net       進入狀態 32
+    net_type  進入狀態 33
+    assign    進入狀態 34
+    cell      進入狀態 35
+
+
+State 19
+
+    6 module: PRIMITIVE add_module ports body . ENDPRIMITIVE
+   10 body: body . net
+   11     | body . assign
+   12     | body . cell
+
+    ENDPRIMITIVE  偏移，並進入狀態 36
+    ASSIGN        偏移，並進入狀態 23
+    INPUT         偏移，並進入狀態 24
+    OUTPUT        偏移，並進入狀態 25
+    INOUT         偏移，並進入狀態 26
+    WIRE          偏移，並進入狀態 27
+    REG           偏移，並進入狀態 28
+    SUPPLY_L      偏移，並進入狀態 29
+    SUPPLY_H      偏移，並進入狀態 30
+    NAME          偏移，並進入狀態 31
+
+    net       進入狀態 32
+    net_type  進入狀態 33
+    assign    進入狀態 34
+    cell      進入狀態 35
+
+
+State 20
+
+    8 ports: '(' list ')' . ';'
+
+    ';'  偏移，並進入狀態 37
+
+
+State 21
+
+   27 list: list ',' . NAME
+   28     | list ',' .
+
+    NAME  偏移，並進入狀態 38
+
+    $預設  使用規則 28 以縮減 (list)
+
+
+State 22
+
+    5 module: MODULE add_module ports body ENDMODULE .
+
+    $預設  使用規則 5 以縮減 (module)
+
+
+State 23
+
+   22 assign: ASSIGN . NAME '=' NAME ';'
+
+    NAME  偏移，並進入狀態 39
+
+
+State 24
+
+   15 net_type: INPUT .
+
+    $預設  使用規則 15 以縮減 (net_type)
+
+
+State 25
+
+   16 net_type: OUTPUT .
+
+    $預設  使用規則 16 以縮減 (net_type)
+
+
+State 26
+
+   17 net_type: INOUT .
+
+    $預設  使用規則 17 以縮減 (net_type)
+
+
+State 27
+
+   18 net_type: WIRE .
+
+    $預設  使用規則 18 以縮減 (net_type)
+
+
+State 28
+
+   19 net_type: REG .
+
+    $預設  使用規則 19 以縮減 (net_type)
+
+
+State 29
+
+   20 net_type: SUPPLY_L .
+
+    $預設  使用規則 20 以縮減 (net_type)
+
+
+State 30
+
+   21 net_type: SUPPLY_H .
+
+    $預設  使用規則 21 以縮減 (net_type)
+
+
+State 31
+
+   23 cell: NAME . NAME '(' list ')' ';'
+   24     | NAME . '(' list ')' ';'
+   25     | NAME . NAME '(' mapping_list ')' ';'
+   26     | NAME . '(' strength_list ')' NAME '(' list ')' ';'
+
+    NAME  偏移，並進入狀態 40
+    '('   偏移，並進入狀態 41
+
+
+State 32
+
+   10 body: body net .
+
+    $預設  使用規則 10 以縮減 (body)
+
+
+State 33
+
+   14 net: net_type . list ';'
+
+    NAME  偏移，並進入狀態 16
+
+    $預設  使用規則 30 以縮減 (list)
+
+    list  進入狀態 42
+
+
+State 34
+
+   11 body: body assign .
+
+    $預設  使用規則 11 以縮減 (body)
+
+
+State 35
+
+   12 body: body cell .
+
+    $預設  使用規則 12 以縮減 (body)
+
+
+State 36
+
+    6 module: PRIMITIVE add_module ports body ENDPRIMITIVE .
+
+    $預設  使用規則 6 以縮減 (module)
+
+
+State 37
+
+    8 ports: '(' list ')' ';' .
+
+    $預設  使用規則 8 以縮減 (ports)
+
+
+State 38
+
+   27 list: list ',' NAME .
+
+    $預設  使用規則 27 以縮減 (list)
+
+
+State 39
+
+   22 assign: ASSIGN NAME . '=' NAME ';'
+
+    '='  偏移，並進入狀態 43
+
+
+State 40
+
+   23 cell: NAME NAME . '(' list ')' ';'
+   25     | NAME NAME . '(' mapping_list ')' ';'
+
+    '('  偏移，並進入狀態 44
+
+
+State 41
+
+   24 cell: NAME '(' . list ')' ';'
+   26     | NAME '(' . strength_list ')' NAME '(' list ')' ';'
+
+    NAME      偏移，並進入狀態 16
+    STRENGTH  偏移，並進入狀態 45
+
+    $預設  使用規則 30 以縮減 (list)
+
+    list           進入狀態 46
+    strength_list  進入狀態 47
+
+
+State 42
+
+   14 net: net_type list . ';'
+   27 list: list . ',' NAME
+   28     | list . ','
+
+    ';'  偏移，並進入狀態 48
+    ','  偏移，並進入狀態 21
+
+
+State 43
+
+   22 assign: ASSIGN NAME '=' . NAME ';'
+
+    NAME  偏移，並進入狀態 49
+
+
+State 44
+
+   23 cell: NAME NAME '(' . list ')' ';'
+   25     | NAME NAME '(' . mapping_list ')' ';'
+
+    NAME  偏移，並進入狀態 16
+    '.'   偏移，並進入狀態 50
+
+    $預設  使用規則 30 以縮減 (list)
+
+    list          進入狀態 51
+    mapping_list  進入狀態 52
+
+
+State 45
+
+   32 strength_list: STRENGTH .
+
+    $預設  使用規則 32 以縮減 (strength_list)
+
+
+State 46
+
+   24 cell: NAME '(' list . ')' ';'
+   27 list: list . ',' NAME
+   28     | list . ','
+
+    ')'  偏移，並進入狀態 53
+    ','  偏移，並進入狀態 21
+
+
+State 47
+
+   26 cell: NAME '(' strength_list . ')' NAME '(' list ')' ';'
+   31 strength_list: strength_list . ',' STRENGTH
+
+    ')'  偏移，並進入狀態 54
+    ','  偏移，並進入狀態 55
+
+
+State 48
+
+   14 net: net_type list ';' .
+
+    $預設  使用規則 14 以縮減 (net)
+
+
+State 49
+
+   22 assign: ASSIGN NAME '=' NAME . ';'
+
+    ';'  偏移，並進入狀態 56
+
+
+State 50
+
+   34 mapping_list: '.' . NAME '(' NAME ')'
+
+    NAME  偏移，並進入狀態 57
+
+
+State 51
+
+   23 cell: NAME NAME '(' list . ')' ';'
+   27 list: list . ',' NAME
+   28     | list . ','
+
+    ')'  偏移，並進入狀態 58
+    ','  偏移，並進入狀態 21
+
+
+State 52
+
+   25 cell: NAME NAME '(' mapping_list . ')' ';'
+   33 mapping_list: mapping_list . ',' '.' NAME '(' NAME ')'
+
+    ')'  偏移，並進入狀態 59
+    ','  偏移，並進入狀態 60
+
+
+State 53
+
+   24 cell: NAME '(' list ')' . ';'
+
+    ';'  偏移，並進入狀態 61
+
+
+State 54
+
+   26 cell: NAME '(' strength_list ')' . NAME '(' list ')' ';'
+
+    NAME  偏移，並進入狀態 62
+
+
+State 55
+
+   31 strength_list: strength_list ',' . STRENGTH
+
+    STRENGTH  偏移，並進入狀態 63
+
+
+State 56
+
+   22 assign: ASSIGN NAME '=' NAME ';' .
+
+    $預設  使用規則 22 以縮減 (assign)
+
+
+State 57
+
+   34 mapping_list: '.' NAME . '(' NAME ')'
+
+    '('  偏移，並進入狀態 64
+
+
+State 58
+
+   23 cell: NAME NAME '(' list ')' . ';'
+
+    ';'  偏移，並進入狀態 65
+
+
+State 59
+
+   25 cell: NAME NAME '(' mapping_list ')' . ';'
+
+    ';'  偏移，並進入狀態 66
+
+
+State 60
+
+   33 mapping_list: mapping_list ',' . '.' NAME '(' NAME ')'
+
+    '.'  偏移，並進入狀態 67
+
+
+State 61
+
+   24 cell: NAME '(' list ')' ';' .
+
+    $預設  使用規則 24 以縮減 (cell)
+
+
+State 62
+
+   26 cell: NAME '(' strength_list ')' NAME . '(' list ')' ';'
+
+    '('  偏移，並進入狀態 68
+
+
+State 63
+
+   31 strength_list: strength_list ',' STRENGTH .
+
+    $預設  使用規則 31 以縮減 (strength_list)
+
+
+State 64
+
+   34 mapping_list: '.' NAME '(' . NAME ')'
+
+    NAME  偏移，並進入狀態 69
+
+
+State 65
+
+   23 cell: NAME NAME '(' list ')' ';' .
+
+    $預設  使用規則 23 以縮減 (cell)
+
+
+State 66
+
+   25 cell: NAME NAME '(' mapping_list ')' ';' .
+
+    $預設  使用規則 25 以縮減 (cell)
+
+
+State 67
+
+   33 mapping_list: mapping_list ',' '.' . NAME '(' NAME ')'
+
+    NAME  偏移，並進入狀態 70
+
+
+State 68
+
+   26 cell: NAME '(' strength_list ')' NAME '(' . list ')' ';'
+
+    NAME  偏移，並進入狀態 16
+
+    $預設  使用規則 30 以縮減 (list)
+
+    list  進入狀態 71
+
+
+State 69
+
+   34 mapping_list: '.' NAME '(' NAME . ')'
+
+    ')'  偏移，並進入狀態 72
+
+
+State 70
+
+   33 mapping_list: mapping_list ',' '.' NAME . '(' NAME ')'
+
+    '('  偏移，並進入狀態 73
+
+
+State 71
+
+   26 cell: NAME '(' strength_list ')' NAME '(' list . ')' ';'
+   27 list: list . ',' NAME
+   28     | list . ','
+
+    ')'  偏移，並進入狀態 74
+    ','  偏移，並進入狀態 21
+
+
+State 72
+
+   34 mapping_list: '.' NAME '(' NAME ')' .
+
+    $預設  使用規則 34 以縮減 (mapping_list)
+
+
+State 73
+
+   33 mapping_list: mapping_list ',' '.' NAME '(' . NAME ')'
+
+    NAME  偏移，並進入狀態 75
+
+
+State 74
+
+   26 cell: NAME '(' strength_list ')' NAME '(' list ')' . ';'
+
+    ';'  偏移，並進入狀態 76
+
+
+State 75
+
+   33 mapping_list: mapping_list ',' '.' NAME '(' NAME . ')'
+
+    ')'  偏移，並進入狀態 77
+
+
+State 76
+
+   26 cell: NAME '(' strength_list ')' NAME '(' list ')' ';' .
+
+    $預設  使用規則 26 以縮減 (cell)
+
+
+State 77
+
+   33 mapping_list: mapping_list ',' '.' NAME '(' NAME ')' .
+
+    $預設  使用規則 33 以縮減 (mapping_list)

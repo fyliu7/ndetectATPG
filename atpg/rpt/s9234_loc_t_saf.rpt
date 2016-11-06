@@ -1,0 +1,32 @@
+#                 Statistics Report
+#  Circuit name                                s9234
+#  Fault model                                   SAF
+#  Pattern type                                  LOC
+#  -------------------------------------------------
+#  Fault classes                             #faults
+#  ----------------------------  -------------------
+#    FU (full)                                 28130
+#    --------------------------  -------------------
+#    UD (undetected)                               0
+#    PT (possibly testable)                        0
+#    AU (atpg untestable)                        721
+#    RE (redundant)                                0
+#    AB (atpg abort)                               0
+#    TI (tied)                                     0
+#    DH (hard-but-detected)                      449
+#    --------------------------  -------------------
+#    DT (detected)                             26498
+#  -------------------------------------------------
+#  Coverage                               percentage
+#    --------------------------  -------------------
+#    test coverage                              100%
+#    fault coverage                            94.2%
+#    atpg effectiveness                       96.76%
+#  -------------------------------------------------
+#  #Patterns                                     230
+#  #Patterns Norm.                               230
+#  Ave.Spec-rate                              24.79%
+#  Max.Spec-rate                              87.45%
+#  -------------------------------------------------
+#  ATPG runtime                              234.1 s
+#  -------------------------------------------------

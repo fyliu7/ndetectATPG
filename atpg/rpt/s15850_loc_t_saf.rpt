@@ -1,0 +1,32 @@
+#                 Statistics Report
+#  Circuit name                               s15850
+#  Fault model                                      
+#  Pattern type                                  LOC
+#  -------------------------------------------------
+#  Fault classes                             #faults
+#  ----------------------------  -------------------
+#    FU (full)                                 49424
+#    --------------------------  -------------------
+#    UD (undetected)                               0
+#    PT (possibly testable)                        0
+#    AU (atpg untestable)                        943
+#    RE (redundant)                                0
+#    AB (atpg abort)                              68
+#    TI (tied)                                     0
+#    DH (hard-but-detected)                     1070
+#    --------------------------  -------------------
+#    DT (detected)                             48413
+#  -------------------------------------------------
+#  Coverage                               percentage
+#    --------------------------  -------------------
+#    test coverage                            99.86%
+#    fault coverage                           97.95%
+#    atpg effectiveness                       99.86%
+#  -------------------------------------------------
+#  #Patterns                                     198
+#  #Patterns Norm.                               198
+#  Ave.Spec-rate                              13.05%
+#  Max.Spec-rate                              95.25%
+#  -------------------------------------------------
+#  ATPG runtime                              224.9 s
+#  -------------------------------------------------
