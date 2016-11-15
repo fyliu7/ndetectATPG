@@ -37,7 +37,7 @@ private:
     FanMgr *fanMgr_;
 };
 
-// TODO read rc extraction 
+//read rc extraction 
 class ReadRCExtraceCmd : public CommonNs::Cmd{
 public:
          ReadRCExtraceCmd(const std::string &name, FanMgr *fanMgr);
@@ -47,9 +47,8 @@ public:
 private:
    FanMgr *fanMgr_;
 };
-//------------------------------
 
-// TODO report read rc extraction
+//report read rc extraction
 class ReportRCExtraceCmd : public CommonNs::Cmd{
 public:
          ReportRCExtraceCmd(const std::string &name, FanMgr *fanMgr);
@@ -59,7 +58,6 @@ public:
 private:
    FanMgr *fanMgr_;
 };
-//-------------------------------
 
 class AddFaultCmd : public CommonNs::Cmd {
 public:

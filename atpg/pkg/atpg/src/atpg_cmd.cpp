@@ -12,7 +12,6 @@
 #include "atpg_cmd.h"
 #include "core/pattern_rw.h"
 #include "core/simulator.h"
-//#include "interface/rcextrace_file.h"
 
 using namespace std;
 using namespace CommonNs;
@@ -132,7 +131,7 @@ bool ReportPatCmd::exec(const vector<string> &argv) {
     return true;
 } //}}}
 
-// TODO read rc extraction
+//read rc extraction
 ReadRCExtraceCmd::ReadRCExtraceCmd(const std::string &name, FanMgr *fanMgr) : Cmd(name) {
     fanMgr_ = fanMgr;
     optMgr_.setName(name);
@@ -198,11 +197,16 @@ bool ReadRCExtraceCmd::exec(const vector<string> &argv) {
 			cline_ = line_;
 			victimgate = atoi(cline_);
 			
-			for(unsigned int i=0; i< fanMgr_->atpg_mgr->fListExtract_->faults_.size(); i++){
-				if(fanMgr_->atpg_mgr->fListExtract_->faults_[i]->gate_ == aggrgate){
-					fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victimgate_.push_back(victimgate);
-				}	
-			} 
+			if(aggrgate != 0 && victimgate != 0){
+				for(unsigned int i=0; i< fanMgr_->atpg_mgr->fListExtract_->faults_.size(); i++){
+					if(fanMgr_->atpg_mgr->fListExtract_->faults_[i]->gate_ == aggrgate){
+						fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victim_.push_back(FaultTuple(victimgate,FaultTuple::VAL0,FaultTuple::UD));
+						fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victim_.push_back(FaultTuple(victimgate,FaultTuple::VAL1,FaultTuple::UD));
+					}	
+				}
+			}
+			
+ 
 		}
 	}			
 						
@@ -215,9 +219,7 @@ bool ReadRCExtraceCmd::exec(const vector<string> &argv) {
     return true; 
 } //}}}
 
-// --------------------------
-
-// TODO report read rc extraction
+//report read rc extraction
 ReportRCExtraceCmd::ReportRCExtraceCmd(const std::string &name, FanMgr *fanMgr) :
   Cmd(name) {
     fanMgr_ = fanMgr;
@@ -247,15 +249,16 @@ bool ReportRCExtraceCmd::exec(const vector<string> &argv) {
 
 	for(unsigned int i=0; i< fanMgr_->atpg_mgr->fListExtract_->faults_.size(); i++){
 		cout << fanMgr_->atpg_mgr->fListExtract_->faults_[i]->gate_ << " ";
-		for(unsigned int j=0; j< fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victimgate_.size(); j++){
-			cout << fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victimgate_[j] << " ";
+		for(unsigned int j=0; j< fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victim_.size(); j++){
+			cout << fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victim_[j].victimgate_ << " ";
+			cout << fanMgr_->atpg_mgr->fListExtract_->faults_[i]->victim_[j].type_ << " ";
+			cout << "     ";
 		}
 		cout << endl;
 	}
 	
 	return true;
-} //}}}
-// ---------------------------  
+} //}}} 
 
 //{{{ AddFaultCmd::AddFaultCmd()
 AddFaultCmd::AddFaultCmd(const std::string &name, FanMgr *fanMgr) :

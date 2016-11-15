@@ -7,8 +7,7 @@ lib/dbg/setup_cmd.o lib/dbg/setup_cmd.d : src/setup_cmd.cpp ../../include/interf
  ../../include/common/cmd.h ../../include/common/ascii.h \
  ../../include/common/get_opt.h src/fan_mgr.h \
  ../../include/common/tm_usage.h ../../include/interface/netlist.h \
- ../../include/interface/techlib.h \
- ../../include/interface/rc_extraction.h ../../include/core/atpg_mgr.h \
+ ../../include/interface/techlib.h ../../include/core/atpg_mgr.h \
  ../../include/core/atpg.h ../../include/core/b_decision_tree.h \
  ../../include/core/learn.h ../../include/core/implicator.h \
  ../../include/core/decision_tree.h ../../include/core/pattern.h \

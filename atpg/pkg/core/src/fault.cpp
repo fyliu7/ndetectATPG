@@ -202,7 +202,7 @@ void FaultListExtract::extract(Circuit *cir) {
 
     }// end of transition fault
 	
-	// TODO new fault type : fault tuple
+	// fault type : fault tuple
 	else{
         gateToFault_ = new int[cir->ngate_];
         for (int i = 0; i < cir->ngate_; ++i) {
@@ -288,6 +288,5 @@ void FaultListExtract::extract(Circuit *cir) {
 
     } */ 		
 	}
-	//--------------------------------------------------------------------------
 }
 

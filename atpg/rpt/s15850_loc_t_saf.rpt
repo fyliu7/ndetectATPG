@@ -1,6 +1,6 @@
 #                 Statistics Report
 #  Circuit name                               s15850
-#  Fault model                                      
+#  Fault model                                    FT
 #  Pattern type                                  LOC
 #  -------------------------------------------------
 #  Fault classes                             #faults
@@ -28,5 +28,5 @@
 #  Ave.Spec-rate                              13.05%
 #  Max.Spec-rate                              95.25%
 #  -------------------------------------------------
-#  ATPG runtime                              224.9 s
+#  ATPG runtime                              223.2 s
 #  -------------------------------------------------

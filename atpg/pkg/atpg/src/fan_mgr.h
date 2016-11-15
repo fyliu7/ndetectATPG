@@ -13,10 +13,6 @@
 #include "interface/netlist.h"
 #include "interface/techlib.h"
 
-//TODO read rc extraction
-#include "interface/rc_extraction.h"
-//-----------------------------------------------
-
 
 #include "core/atpg_mgr.h"
 

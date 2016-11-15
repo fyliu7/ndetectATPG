@@ -19,9 +19,10 @@ using namespace std;
 namespace CoreNs {
 
 class Fault;
+class FaultTuple;
 typedef std::vector<Fault *>         FaultVec;
 typedef std::list<Fault *>           FaultList;
-typedef std::list<Fault *>::iterator FaultListIter;
+typedef std::list<Fault *>::iterator FaultListIter;	
 
 class Fault {
 public:
@@ -45,9 +46,7 @@ public:
     // *     AH     hard and aborted 
     // ************************************
 	
-	// TODO new fault type : fault tuple
     enum  Type { SA0 = 0, SA1, STR, STF, BR, FT };
-	//----------------------------------------------------------
 	
     enum  State { UD = 0, DT, DH, PT, AU, TI, RE, AB, AH };
 
@@ -65,19 +64,36 @@ public:
 
     int   hard_; 
 	
-	// TODO victim of target fault 
-	vector<int>  victimgate_; 
-	//--------------------------------------------------------------------------------------------------	
+	vector<FaultTuple>  victim_; //victim of target fault 
 
     void  print() const; 
 };
 
+class FaultTuple{
+public:
+	enum  Type { VAL0 = 0, VAL1};
+	enum  State { UD = 0, DT};
+	FaultTuple();
+	FaultTuple(int victimgate,Type type, State state);
+	~FaultTuple();
+	int victimgate_;	//victim gate of target fault 
+	Type type_;			//victim type of target fault 
+	State state_; 		//victim detect state of target fault
+};
+
+inline FaultTuple::FaultTuple(int victimgate,Type type, State state) {
+    type_  = type;
+    victimgate_  = victimgate;
+	state_ = state;
+}
+
+inline FaultTuple::~FaultTuple() {}
+
+
 class FaultListExtract {
 public:
 
-	// TODO new fault type : fault tuple
     enum      Type { SAF = 0, TDF, BRF, FT};
-	//-------------------------------------------------------------
 
               FaultListExtract();
               ~FaultListExtract();
@@ -100,7 +116,6 @@ inline Fault::Fault() {
     det_   = 0;
     state_ = UD;
     hard_  = -1;
-	victimgate_;
 }
 // for bridging fault only
 inline Fault::Fault(int gate, Type type, int line, int aggr) {
@@ -132,13 +147,10 @@ inline void Fault::print() const
             break;
         case Fault::BR:
             cout << "BR      ";
-            break;
-			
-		// TODO new fault type : fault tuple	
+            break;	
 		case Fault::FT:
             cout << "FT      ";
             break;
-		//-----------------------------------------
 		
     }
     switch (state_) {

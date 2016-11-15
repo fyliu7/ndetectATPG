@@ -194,12 +194,8 @@ void initCmd(CmdMgr &cmdMgr, FanMgr &fanMgr) {
 
     // setup commands
     Cmd *readLibCmd      = new ReadLibCmd("read_lib", &fanMgr);
-    Cmd *readNlCmd       = new ReadNlCmd("read_netlist", &fanMgr);
-	
-	//TODO new fault type fault tuple
-    Cmd *setFaultTypeCmd = new SetFaultTypeCmd("set_fault_type", &fanMgr);
-	//---------------------------------------------------------------------------------
-	
+    Cmd *readNlCmd       = new ReadNlCmd("read_netlist", &fanMgr);	
+    Cmd *setFaultTypeCmd = new SetFaultTypeCmd("set_fault_type", &fanMgr);	
     Cmd *buildCirCmd     = new BuildCircuitCmd("build_circuit", &fanMgr);
     Cmd *reportNlCmd     = new ReportNetlistCmd("report_netlist", &fanMgr);
     Cmd *reportCellCmd   = new ReportCellCmd("report_cell", &fanMgr);
@@ -227,19 +223,9 @@ void initCmd(CmdMgr &cmdMgr, FanMgr &fanMgr) {
     // ATPG commands
     Cmd *readPatCmd       = new ReadPatCmd("read_pattern", &fanMgr);
     Cmd *reportPatCmd     = new ReportPatCmd("report_pattern", &fanMgr);
-	
-    // TODO read rc extraction file
     Cmd *readRCExtraceCmd = new ReadRCExtraceCmd("read_rc_extrace", &fanMgr);
-    //----------------------------
-    
-    // TODO report read rc extraction file
     Cmd *reportRCExtraceCmd = new ReportRCExtraceCmd("report_rc_extrace", &fanMgr);
-    //----------------------------
-	
-	// TODO new fault type fault tuple
     Cmd *addFaultCmd      = new AddFaultCmd("add_fault", &fanMgr);
-	//--------------------------------------
-	
     Cmd *reportFaultCmd   = new ReportFaultCmd("report_fault", &fanMgr);
     Cmd *addPinConsCmd    = new AddPinConsCmd("add_pin_constraint", &fanMgr);
     Cmd *runLogicSimCmd   = new RunLogicSimCmd("run_logic_sim", &fanMgr);

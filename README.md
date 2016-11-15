@@ -38,4 +38,10 @@
 			(done)		pkg/core/fault.h
 			(done)		pkg/atpg/src/atpg_cmd.cpp	
 			
+2016/11/15	circuit state simulation
+			(done)	pkg/core/fault.h
+			(done)	pkg/atpg/src/atpg_cmd.cpp	
+
+			
+
 			
